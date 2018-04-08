@@ -8,7 +8,7 @@
     <br>
     <br>
     <keep-alive>
-      <activity-form v-bind:showform="showform" v-on:add="addPlace"></activity-form>
+      <activity-form @close="popup" v-bind:showform="showform" v-on:add="addPlace"></activity-form>
     </keep-alive>
     <q-btn round color="primary" icon="add" @click="popup">
       <q-tooltip>Add activity</q-tooltip>
@@ -46,7 +46,6 @@ export default {
         location: value.place
       }
       this.places.push(place)
-      console.log(this.places)
     }
   },
   computed: {

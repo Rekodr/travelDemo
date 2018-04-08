@@ -1,5 +1,5 @@
 <template>
-<q-modal ref="actmodal" no-backdrop-dismiss v-model="showfromL" :content-css="{minWidth: '80vw', minHeight: '80vh'}">
+<q-modal ref="actmodal" no-backdrop-dismiss no-esc-dismiss v-model="showfromL" :content-css="{minWidth: '80vw', minHeight: '80vh'}">
   <q-modal-layout>
     <q-toolbar slot="header">
       <q-btn round flat dense icon="reply" v-close-overlay/>
@@ -38,8 +38,7 @@ export default {
     return {
       place: 'New-York',
       startTime: null,
-      endTime: null,
-      show: false
+      endTime: null
     }
   },
   methods: {
@@ -49,13 +48,18 @@ export default {
         startTime: this.startTime,
         endTime: this.endTime
       }
-      this.$emit('adds', info)
+      this.$emit('add', info)
       this.$refs.actmodal.hide()
     }
   },
   computed: {
-    showfromL: function () {
-      return this.showform
+    showfromL: {
+      get: function () {
+        return this.showform
+      },
+      set: function (value) {
+        this.$emit('close')
+      }
     }
   }
 }
