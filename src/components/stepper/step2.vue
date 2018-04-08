@@ -1,9 +1,9 @@
 <template>
   <div>
     <h3>{{msg}}</h3>
-    <ul v-for="activity in places" :key="activity.startTime">
+    <div class="column inline q-pa-sm" v-for="activity in places" :key="activity.startTime">
       <activity-comp v-bind:activity="activity"></activity-comp>
-    </ul>
+    </div>
     <br>
     <br>
     <br>

@@ -1,5 +1,5 @@
 <template>
-  <q-card style="width: 500px">
+  <q-card inline style="width: 350px" class="col-xs-12 col-sm-6 col-md-4">
     <q-card-media>
       <img src="~assets/place.jpg">
     </q-card-media>
