@@ -1,7 +1,7 @@
 <template>
   <q-card style="width: 500px">
     <q-card-media>
-      <img src="~assets/place.jpeg">
+      <img src="~assets/place.jpg">
     </q-card-media>
     <q-card-title>
       {{activity.location}}

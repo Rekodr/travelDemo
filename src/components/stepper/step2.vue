@@ -7,9 +7,9 @@
     <br>
     <br>
     <br>
-    <q-modal v-model="show" :content-css="{minWidth: '80vw', minHeight: '80vh', padding: '20px' }">
-      <activity-form v-on:add="addPlace"></activity-form>
-    </q-modal>
+    <keep-alive>
+      <activity-form v-bind:showform="showform" v-on:add="addPlace"></activity-form>
+    </keep-alive>
     <q-btn round color="primary" icon="add" @click="popup">
       <q-tooltip>Add activity</q-tooltip>
     </q-btn>
@@ -20,7 +20,6 @@
 import activityForm from '../activity/form'
 import activityComp from '../activity/component'
 export default {
-  name: 'step1',
   props: ['dest'],
   components: {
     activityForm,
@@ -28,7 +27,7 @@ export default {
   },
   data () {
     return {
-      show: false,
+      showform: false,
       places: [
         { startTime: '@sometime', endTime: '@someOtherTime', location: '@someLocation' }
       ],
@@ -37,7 +36,7 @@ export default {
   },
   methods: {
     popup: function () {
-      this.show = !this.show
+      this.showform = !this.showform
       return null
     },
     addPlace: function (value) {

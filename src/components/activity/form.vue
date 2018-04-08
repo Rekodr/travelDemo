@@ -1,7 +1,8 @@
 <template>
+<q-modal ref="actmodal" no-backdrop-dismiss v-model="showfromL" :content-css="{minWidth: '80vw', minHeight: '80vh'}">
   <q-modal-layout>
     <q-toolbar slot="header">
-      <q-btn round flat dense icon="reply" />
+      <q-btn round flat dense icon="reply" v-close-overlay/>
       <q-toolbar-title>New Activity</q-toolbar-title>
     </q-toolbar>
     <br>
@@ -26,16 +27,19 @@
         @click="save"/>
     </div>
   </q-modal-layout>
+</q-modal>
 </template>
 
 <script>
 export default {
   name: 'activityForm',
+  props: ['showform'],
   data () {
     return {
       place: 'New-York',
       startTime: null,
-      endTime: null
+      endTime: null,
+      show: false
     }
   },
   methods: {
@@ -45,7 +49,13 @@ export default {
         startTime: this.startTime,
         endTime: this.endTime
       }
-      this.$emit('add', info)
+      this.$emit('adds', info)
+      this.$refs.actmodal.hide()
+    }
+  },
+  computed: {
+    showfromL: function () {
+      return this.showform
     }
   }
 }
