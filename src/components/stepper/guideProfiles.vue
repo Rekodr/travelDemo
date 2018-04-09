@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="column inline q-pa-sm" v-for="guide in guides" :key="guide.name">
-    <div v-if="budget >= guide.service">
+    <div v-if="budget.max >= guide.service && budget.min <= guide.service">
       <guide-comp :guide="guide"></guide-comp>
     </div>
   </div>
@@ -9,16 +9,62 @@
 </template>
 
 <script>
-import guideComp from '../profiles/guideComp'
+import guideComp from '../profiles/guide/guideCard'
 export default {
   names: 'guidepage',
-  props: ['guides', 'budget'],
+  props: ['budget'],
   components: {
     guideComp
   },
   data () {
     return {
-      msg: 'hello world'
+      msg: 'hello world',
+      guides: [
+        {
+          username: 'Naruto Uzumaki',
+          service: 300,
+          age: 24,
+          contact: {
+            email: 'someemail@mail.com'
+          },
+          tour: [],
+          rated: 20,
+          grade: 2
+        },
+        {
+          username: 'Sasuke Uchiwa',
+          service: 600,
+          age: 33,
+          contact: {
+            email: 'someemail@mail.com'
+          },
+          tour: [],
+          rated: 9,
+          grade: 3.5
+        },
+        {
+          username: 'Jin Kazama',
+          service: 1000,
+          age: 45,
+          contact: {
+            email: 'someemail@mail.com'
+          },
+          tour: [],
+          rated: 26,
+          grade: 2
+        },
+        {
+          username: 'Oasiris of Egypt',
+          service: 5000,
+          age: 52,
+          contact: {
+            email: 'someemail@mail.com'
+          },
+          tour: [],
+          rated: 1000,
+          grade: 5
+        }
+      ]
     }
   }
 }

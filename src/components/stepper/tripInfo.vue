@@ -12,12 +12,12 @@
     </q-field>
     <br>
     <q-field icon="event">
-      <q-datetime type="date" float-label="When are you leaving ?"
+      <q-datetime type="date" modal float-label="When are you leaving ?"
       :value="tripInfo.firstDay" @change="val => { tripInfo.firstDay = val, update()}"/>
     </q-field>
     <br>
     <q-field icon="event">
-      <q-datetime type="date" float-label="When are you going back ?"
+      <q-datetime type="date" modal float-label="When are you going back ?"
       :value="tripInfo.lastDay" @change="val => { tripInfo.lastDay = val, update()}"/>
     </q-field>
     <br>
@@ -32,10 +32,10 @@
         :value="tripInfo.people" @change="val => { tripInfo.people = val, update()}" clearable/>
     </q-field>
     <br>
-    <q-field icon="monetization on" label="Budget per person">
-      <q-slider label-always :min="100" :max="10000" float-label="What is your budget per person"
-        :value="tripInfo.budget" @change="val => { tripInfo.budget = val, update()}"
-        :label-value="`$${tripInfo.budget}`"/>
+    <q-field icon="monetization on" label="What is your budget range per person ?">
+      <q-range label-always :min="0" :max="10000"
+        v-model="tripInfo.budget" @input="val => { tripInfo.budget = val, update()}"
+        :right-label-value="`$${tripInfo.budget.max}`" :left-label-value="`$${tripInfo.budget.min}`"/>
     </q-field>
   </div>
 </template>
@@ -43,7 +43,7 @@
 <script>
 export default {
   name: 'tripinformation',
-  props: ['destinations', 'themes'],
+  props: [],
   data () {
     return {
       tripInfo: {
@@ -52,9 +52,36 @@ export default {
         firstDay: null,
         lastDay: null,
         people: null,
-        budget: 100,
+        budget: {
+          min: 0,
+          max: 1000
+        },
         theme: []
-      }
+      },
+      destinations: [
+        {
+          label: 'Tokyo, Japan',
+          value: 'tok'
+        },
+        {
+          label: 'San Francisco, CA, USA',
+          value: 'sf'
+        }
+      ],
+      themes: [
+        {
+          label: 'Hiking',
+          value: 'hik'
+        },
+        {
+          label: 'Restaurent',
+          value: 'restau'
+        },
+        {
+          label: 'kayaking',
+          value: 'kay'
+        }
+      ]
     }
   },
   methods: {
