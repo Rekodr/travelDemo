@@ -35,8 +35,8 @@
 </style>
 
 <script>
-import basicInfoForm from '../components/stepper/step1'
-import travelInfoForm from '../components/stepper/step2'
+import basicInfoForm from '../components/stepper/introStep'
+import travelInfoForm from '../components/stepper/tripInfo'
 export default {
   name: 'PageIndex',
   data () {
