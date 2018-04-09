@@ -12,6 +12,7 @@ const Router = new VueRouter({
    * If you decide to go with "history" mode, please also set "build.publicPath"
    * to something other than an empty string.
    * Example: '/' instead of ''
+   * * kkoooo
    */
 
   // Leave as is and change from quasar.conf.js instead!
