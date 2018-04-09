@@ -1,56 +1,65 @@
 <template>
-  <div>
-    <h3>{{msg}}</h3>
-    <div class="column inline q-pa-sm" v-for="activity in places" :key="activity.startTime">
-      <activity-comp v-bind:activity="activity"></activity-comp>
-    </div>
+  <div class="q-pa-sm">
+    <q-field icon=flight_takeoff>
+      <q-input float-label="Where are you travelling from ?" placeholder="San Francisco, CA, USA"
+        :value="tripInfo.origin" @change="val => {tripInfo.origin = val, update()}" clearable/>
+    </q-field>
+    <br>
+    <q-field icon="flight_land">
+      <q-select filter  filter-placeholder="search" float-label="Where are you going ?"
+      :options="destinations" :value="tripInfo.destination"
+      @change="val => {tripInfo.destination = val, update()}" clearable/>
+    </q-field>
+    <br>
+    <q-field icon="event">
+      <q-datetime type="date" float-label="When are you leaving ?"
+      :value="tripInfo.firstDay" @change="val => { tripInfo.firstDay = val, update()}"/>
+    </q-field>
+    <br>
+    <q-field icon="event">
+      <q-datetime type="date" float-label="When are you going back ?"
+      :value="tripInfo.lastDay" @change="val => { tripInfo.lastDay = val, update()}"/>
+    </q-field>
+    <br>
+    <q-field icon="rowing">
+      <q-select filter multiple filter-placeholder="search" float-label="What would you like to do?"
+        :options="themes" :value="tripInfo.theme" @change="val => { tripInfo.theme = val}" clearable/>
+    </q-field>
     <br>
     <br>
+    <q-field icon="accessibility">
+      <q-input type="number" float-label="How many people are going ?"
+        :value="tripInfo.people" @change="val => { tripInfo.people = val, update()}" clearable/>
+    </q-field>
     <br>
-    <keep-alive>
-      <activity-form @close="popup" v-bind:showform="showform" v-on:add="addPlace"></activity-form>
-    </keep-alive>
-    <q-btn round color="primary" icon="add" @click="popup">
-      <q-tooltip>Add activity</q-tooltip>
-    </q-btn>
+    <q-field icon="monetization on" label="Budget per person">
+      <q-slider label-always :min="100" :max="10000" float-label="What is your budget per person"
+        :value="tripInfo.budget" @change="val => { tripInfo.budget = val, update()}"
+        :label-value="`$${tripInfo.budget}`"/>
+    </q-field>
   </div>
 </template>
 
 <script>
-import activityForm from '../activity/form'
-import activityComp from '../activity/component'
 export default {
-  props: ['dest'],
-  components: {
-    activityForm,
-    activityComp
-  },
+  name: 'tripinformation',
+  props: ['destinations', 'themes'],
   data () {
     return {
-      showform: false,
-      places: [
-        { startTime: '@sometime', endTime: '@someOtherTime', location: '@someLocation' }
-      ],
-      birthday: null
+      tripInfo: {
+        origin: null,
+        destination: null,
+        firstDay: null,
+        lastDay: null,
+        people: null,
+        budget: 100,
+        theme: []
+      }
     }
   },
   methods: {
-    popup: function () {
-      this.showform = !this.showform
-      return null
-    },
-    addPlace: function (value) {
-      var place = {
-        startTime: value.startTime,
-        endTime: value.endTime,
-        location: value.place
-      }
-      this.places.push(place)
-    }
-  },
-  computed: {
-    msg: function () {
-      return 'Let"s plan your trip to ' + this.dest
+    update: function () {
+      this.$emit('update', this.tripInfo)
     }
   }
 }

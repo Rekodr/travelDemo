@@ -7,6 +7,12 @@
         @change="val => { userTemp.username = val, updateUser()}"/>
       </q-field>
       <br>
+      <q-field icon="mail_outline">
+        <q-input :value="userTemp.email" type="email" float-label="What your E-mail address ?"
+          placeholder="youremail@example.com" clearable
+          @change="val => { userTemp.email = val, updateUser()}" />
+      </q-field>
+      <br>
       <q-field icon="date_range">
         <q-datetime popover :value="userTemp.birthday" float-label="When were you born ?" type="date"
         clearable
@@ -19,16 +25,6 @@
           @change="val => {userTemp.fromLoc = val, updateUser()}"/>
       </q-field>
       <br>
-      <q-field  icon="place">
-        <q-search :value="destination" @change="val => {updateDest(val)}" float-label="Where are you going ?"
-          placeholder="Tokyo, Japan" clearable/>
-      </q-field>
-      <br>
-      <q-field icon="date_range">
-          <q-datetime popover :value="leaveDate" float-label="When are you leaving ?" type="date"
-          clearable
-          @change="val => { leaveDate = val, updateUser()}"/>
-      </q-field>
   </div>
 </template>
 
@@ -40,12 +36,13 @@ export default {
     return {
       userTemp: {
         username: null,
+        email: null,
         birthday: null,
         fromLoc: null
       },
       destination: '',
       leaveDate: '',
-      msg: 'Basic info form here'
+      msg: 'User Information here.'
     }
   },
   methods: {

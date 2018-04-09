@@ -75,6 +75,8 @@ module.exports = function (ctx) {
         'QItemMain',
         'QItemSide',
         'QSearch',
+        'QSelect',
+        'QSlider',
         'QStepper',
         'QStep',
         'QStepperNavigation'
