@@ -22,47 +22,51 @@ export default {
       guides: [
         {
           username: 'Naruto Uzumaki',
-          service: 300,
+          servicecost: 13,
           age: 24,
           contact: {
             email: 'someemail@mail.com'
           },
           tour: [],
           rated: 20,
-          grade: 2
+          grade: 4,
+          photosLinks: []
         },
         {
           username: 'Sasuke Uchiwa',
-          service: 600,
+          servicecost: 15,
           age: 33,
           contact: {
             email: 'someemail@mail.com'
           },
           tour: [],
           rated: 9,
-          grade: 3.5
+          grade: 3.5,
+          photosLinks: []
         },
         {
           username: 'Jin Kazama',
-          service: 1000,
+          servicecost: 16,
           age: 45,
           contact: {
             email: 'someemail@mail.com'
           },
           tour: [],
           rated: 26,
-          grade: 2
+          grade: 3.5,
+          photosLinks: []
         },
         {
-          username: 'Oasiris of Egypt',
-          service: 5000,
-          age: 52,
+          username: ' Megumi Hayashiara',
+          service: 20,
+          age: 39,
           contact: {
             email: 'someemail@mail.com'
           },
           tour: [],
           rated: 1000,
-          grade: 5
+          grade: 5,
+          photosLinks: []
         }
       ]
     }
