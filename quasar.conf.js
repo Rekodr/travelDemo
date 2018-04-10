@@ -5,7 +5,8 @@ module.exports = function (ctx) {
     // app plugins (/src/plugins)
     plugins: [
       'i18n',
-      'axios'
+      'axios',
+      'vuelidate'
     ],
     css: [
       'app.styl'
@@ -51,7 +52,10 @@ module.exports = function (ctx) {
         'QCardMain',
         'QCardMedia',
         'QCardSeparator',
-        'QCardActions',      
+        'QCardActions',
+        'QCarousel',
+        'QCarouselSlide',
+        'QCarouselControl',      
         'QDatetime',
         'QField',
         'QInput',
@@ -76,6 +80,7 @@ module.exports = function (ctx) {
         'QItem',
         'QItemMain',
         'QItemSide',
+        'QItemTile',
         'QSearch',
         'QSelect',
         'QRange',
@@ -89,7 +94,7 @@ module.exports = function (ctx) {
       ],
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
       ]
     },
     // animations: 'all' --- includes all animations

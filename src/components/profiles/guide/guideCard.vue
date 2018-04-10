@@ -4,9 +4,11 @@
     <q-card-media overlay-position="bottom">
       <img src="~assets/place.jpg">
       <div slot="overlay" class="row justify-between q-pa-sm">
-        <q-btn  dense round color="primary" icon="person_pin"/>
+        <q-btn  dense round color="primary" icon="person_pin"
+          @click="show"/>
         <q-btn dense round color="primary" icon="shopping cart"/>
       </div>
+    <profile @closed="show" :showProfile="showProfile" :guide="guide"></profile>
     </q-card-media>
     <q-card-title>
       {{guide.username}}
@@ -33,12 +35,22 @@
 </template>
 
 <script>
+import profile from './guideProfile'
 export default {
   name: 'guideComp',
   props: ['guide'],
+  components: {
+    profile
+  },
   data () {
     return {
-      msg: this.guide.username
+      msg: this.guide.username,
+      showProfile: false
+    }
+  },
+  methods: {
+    show: function () {
+      this.showProfile = !this.showProfile
     }
   }
 }
