@@ -54,14 +54,14 @@ export default {
     },
     updateUser: function () {
       this.$emit('userChange', this.userTemp)
-    }
-    addUser: function() {
-      this.userTemp['userid'] = this.id,
-      this.id += 1,
+    },
+    addUser: function () {
+      this.userTemp['userid'] = this.id
+      this.id += 1
       this.$store.dispatch('addTraveller', this)
-      .catch(e, => {
-        console.log('Adding User Failed failed.')
-      })
+        .catch(e => {
+          console.log('Adding User Failed failed.')
+        })
     }
   }
 }
