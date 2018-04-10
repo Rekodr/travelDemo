@@ -14,7 +14,7 @@
       </q-field>
       <br>
       <q-field icon="date_range">
-        <q-datetime modal :value="userTemp.birthday" float-label="When were you born ?" type="date"
+        <q-datetime modal :value="userTemp.birthday" float-label="Date of birth?" type="date"
         clearable
         @change="val => { userTemp.birthday = val, updateUser()}"/>
       </q-field>
@@ -38,11 +38,13 @@ export default {
         username: null,
         email: null,
         birthday: null,
-        fromLoc: null
+        fromLoc: null,
+        userid: null
       },
       destination: '',
       leaveDate: '',
-      msg: 'User Information here.'
+      msg: 'User Information here.',
+      id: 0
     }
   },
   methods: {
@@ -52,6 +54,14 @@ export default {
     },
     updateUser: function () {
       this.$emit('userChange', this.userTemp)
+    }
+    addUser: function() {
+      this.userTemp['userid'] = this.id,
+      this.id += 1,
+      this.$store.dispatch('addTraveller', this)
+      .catch(e, => {
+        console.log('Adding User Failed failed.')
+      })
     }
   }
 }
