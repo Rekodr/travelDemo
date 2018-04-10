@@ -2,7 +2,7 @@
   <q-page class="flex-center no-border">
     <q-stepper class="no-border" alternative-labels selected-icon ref="stepper">
 
-      <q-step default title="User Information" subtitle="Basic Information">
+      <q-step :order="1" default title="User Information" subtitle="Basic Information">
         <keep-alive>
           <basic-info-form v-on:userChange="updateUser">
           </basic-info-form>
@@ -12,7 +12,7 @@
         </q-stepper-navigation>
       </q-step>
 
-      <q-step :order="2" title="Plan your trip" subtitle="Plan">
+      <q-step :order="2" title="Trip Information" subtitle="Plan">
         <keep-alive>
           <travel-info-form v-on:update="updateTripInfo"></travel-info-form>
         </keep-alive>
@@ -26,10 +26,17 @@
         <found-guiddes :budget="tripInfo.budget"></found-guiddes>
         <q-stepper-navigation>
           <q-btn @click="$refs.stepper.previous()" label="Back"/>
-          <q-btn @click="$refs.stepper.next()" label="Complete"/>
+          <q-btn @click="$refs.stepper.next()" label="Continue"/>
         </q-stepper-navigation>
       </q-step>
-      <q-inner-loading :visible="visible" />
+
+      <q-step :order="4" title="something">
+        <q-stepper-navigation>
+          <q-btn @click="$refs.stepper.previous()" label="Back"/>
+          <q-btn label="Complete"/>
+        </q-stepper-navigation>
+      </q-step>
+
     </q-stepper>
   </q-page>
 </template>

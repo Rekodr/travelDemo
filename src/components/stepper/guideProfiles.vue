@@ -28,6 +28,7 @@ export default {
             email: 'someemail@mail.com'
           },
           tour: [],
+          pictures: ['assets/image1.jpeg', 'assets/image2.jpeg', 'assets/image3.jpeg'],
           rated: 20,
           grade: 2
         },
@@ -39,6 +40,7 @@ export default {
             email: 'someemail@mail.com'
           },
           tour: [],
+          pictures: ['assets/image1.jpeg', 'assets/image2.jpeg', 'assets/image3.jpeg'],
           rated: 9,
           grade: 3.5
         },
@@ -50,6 +52,7 @@ export default {
             email: 'someemail@mail.com'
           },
           tour: [],
+          pictures: ['assets/image1.jpeg', 'assets/image2.jpeg', 'assets/image3.jpeg'],
           rated: 26,
           grade: 2
         },
@@ -61,6 +64,7 @@ export default {
             email: 'someemail@mail.com'
           },
           tour: [],
+          pictures: ['assets/image1.jpeg', 'assets/image2.jpeg', 'assets/image3.jpeg'],
           rated: 1000,
           grade: 5
         }
