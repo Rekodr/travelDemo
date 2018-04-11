@@ -26,20 +26,7 @@ export default {
         {
           id: 0,
           activities: [
-            {
-              name: 'tea at the Yoko',
-              picture: 'assets/japanactivities/teaactivity.jpg',
-              time: '8:15 AM',
-              description: 'fun time',
-              icon: 'tag_faces'
-            },
-            {
-              name: 'Finshing dragon gods',
-              picture: 'assets/japanactivities/fishing.jpg',
-              time: '10:00 AM',
-              description: 'fun time',
-              icon: 'tag_faces'
-            }
+
           ]
         }
       ]
