@@ -22,11 +22,11 @@
           </q-item-main>
         </q-item>
         <q-item>
-          <q-item-main>{{guide}}</q-item-main>
+          <q-item-main>{{guide.description}}</q-item-main>
           <q-item-side></q-item-side>
         </q-item>
         <q-item>
-          <q-item-main><h4>This page need containt</h4></q-item-main>
+          <q-item-main v-for="item in guide.specialities" :key="item">{{item}} </q-item-main>
           <q-item-side></q-item-side>
         </q-item>
       </div>

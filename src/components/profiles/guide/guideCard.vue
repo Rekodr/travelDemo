@@ -2,11 +2,11 @@
 <div>
   <q-card inline style="width: 300px" class="col-xs-12 col-sm-6 col-md-4">
     <q-card-media overlay-position="bottom">
-      <img src="~assets/place.jpg">
+      <img :src="guide.avatar" height="350" width="200">
       <div slot="overlay" class="row justify-between q-pa-sm">
         <q-btn  dense round color="primary" icon="person_pin"
           @click="show"/>
-        <q-btn dense round color="primary" icon="shopping cart"/>
+        <q-btn dense round color="primary" icon="shopping cart" @click="buy"/>
       </div>
     <profile @closed="show" :showProfile="showProfile" :guide="guide"></profile>
     </q-card-media>
@@ -18,7 +18,7 @@
     </q-card-title>
     <q-card-main >
       <div>
-        <q-btn flat v-bind:label="`service cost: $${guide.service} per person`"/>
+        <q-btn flat v-bind:label="`service cost: $${guide.service} per day`"/>
       </div>
     </q-card-main>
     <q-card-separator/>
@@ -51,6 +51,9 @@ export default {
   methods: {
     show: function () {
       this.showProfile = !this.showProfile
+    },
+    buy: function () {
+      this.$emit('lock', false)
     }
   }
 }
