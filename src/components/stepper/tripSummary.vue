@@ -2,15 +2,13 @@
   <div>
     <q-timeline>
       <div v-for="day in days" :key="day.id">
-        <q-timeline-entry heading>{{day.id}}</q-timeline-entry>
-        <q-timeline-entry color="red" :icon="activity.icon" v-for="activity in day.activities" :key="activity.time"
-          :title="activity.name" :subtitle="activity.time" side="left">
-          <div>
-            <q-item>
-              <q-item-main>{{activity.description}}</q-item-main>
-              <q-item-side :image="activity.picture"/>
-            </q-item>
-          </div>
+        <q-timeline-entry heading>Day {{day.id}}/{{days.length}}</q-timeline-entry>
+        <q-timeline-entry content color="red" :icon="activity.icon" v-for="activity in day.activities"
+        :key="activity.time" :title="activity.name" :subtitle="activity.time">
+          <q-item>
+            {{activity.description}}
+            <q-item-side :image="activity.picture"/>
+          </q-item>
         </q-timeline-entry>
       </div>
     </q-timeline>
@@ -24,7 +22,7 @@ export default {
     return {
       days: [
         {
-          id: 0,
+          id: 1,
           activities: [
             {
               name: 'tea at the Yoko',
@@ -39,6 +37,25 @@ export default {
               time: '10:00 AM',
               description: 'fun time',
               icon: 'tag_faces'
+            }
+          ]
+        },
+        {
+          id: 2,
+          activities: [
+            {
+              name: 'tea at the Yoko',
+              picture: 'assets/japanactivities/teaactivity.jpg',
+              time: '8:15 AM',
+              description: 'fun time',
+              icon: 'account_balance'
+            },
+            {
+              name: 'Finshing dragon gods',
+              picture: 'assets/japanactivities/fishing.jpg',
+              time: '10:00 AM',
+              description: 'fun time',
+              icon: 'account_balance'
             }
           ]
         }

@@ -23,7 +23,7 @@
       </q-step>
 
       <q-step :order="3" title="Your favorite guide">
-        <found-guiddes v-on:lock="lock" :budget="tripInfo.budget"></found-guiddes>
+        <found-guiddes v-on:lock="lock" :budget=true></found-guiddes>
         <q-stepper-navigation>
           <q-btn @click="$refs.stepper.previous()" label="Back"/>
           <q-btn @click="nextStep" label="Continue"/>
@@ -96,18 +96,19 @@ export default {
       this.questions = value
     },
     nextStep: function () {
-      if (this.pagelock === false) {
-        console.log('lock st: ' + this.pagelock)
-        this.$refs.stepper.next()
-        this.pagelock = true
-      } else {
-        this.$q.notify({
-          message: 'Please complete all the required fields !',
-          timeout: 1500,
-          type: 'negative',
-          position: 'top'
-        })
-      }
+      this.$refs.stepper.next()
+      // if (this.pagelock === false) {
+      //   console.log('lock st: ' + this.pagelock)
+      //   this.$refs.stepper.next()
+      //   this.pagelock = true
+      // } else {
+      //   this.$q.notify({
+      //     message: 'Please complete all the required fields !',
+      //     timeout: 1500,
+      //     type: 'negative',
+      //     position: 'top'
+      //   })
+      // }
     },
     lock: function (value) {
       this.pagelock = value

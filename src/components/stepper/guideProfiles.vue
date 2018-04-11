@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="column inline q-pa-sm" v-for="guide in guides" :key="guide.name">
-    <div v-if="budget.max >= 1">
+    <div v-if="budget">
       <guide-comp v-on:book="book" :guide="guide"></guide-comp>
     </div>
   </div>

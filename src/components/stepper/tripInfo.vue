@@ -95,6 +95,8 @@ export default {
     }
   },
   mounted: function () {
+    this.tripInfo.budget.max = 1000
+    this.update()
     this.$emit('lock', true)
   },
   methods: {
