@@ -20,11 +20,11 @@ export default {
   name: 'tripSummary',
   data () {
     return {
-            days: [
+      days: [
         {
           id: 1,
           activities: [
-                        {
+            {
               name: 'tea at the Yoko',
               picture: 'assets/japanactivities/teaactivity.jpg',
               time: '8:15 AM',
