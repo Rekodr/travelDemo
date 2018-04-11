@@ -6,7 +6,7 @@
       <div slot="overlay" class="row justify-between q-pa-sm">
         <q-btn  dense round color="primary" icon="person_pin"
           @click="show"/>
-        <q-btn dense round color="primary" icon="shopping cart" @click="buy"/>
+        <q-btn dense round color="primary" icon="shopping cart" @click="book"/>
       </div>
     <profile @closed="show" :showProfile="showProfile" :guide="guide"></profile>
     </q-card-media>
@@ -53,8 +53,9 @@ export default {
     show: function () {
       this.showProfile = !this.showProfile
     },
-    buy: function () {
-      this.$emit('lock', false)
+    book: function () {
+      this.color = 'secondary'
+      this.$emit('book', this.guide)
     }
   }
 }

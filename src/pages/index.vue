@@ -23,7 +23,7 @@
       </q-step>
 
       <q-step :order="3" title="Your favorite guide">
-        <found-guiddes :budget="tripInfo.budget"></found-guiddes>
+        <found-guiddes v-on:lock="lock" :budget="tripInfo.budget"></found-guiddes>
         <q-stepper-navigation>
           <q-btn @click="$refs.stepper.previous()" label="Back"/>
           <q-btn @click="nextStep" label="Continue"/>
