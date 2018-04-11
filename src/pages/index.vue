@@ -48,14 +48,14 @@
 import basicInfoForm from '../components/stepper/introStep'
 import travelInfoForm from '../components/stepper/tripInfo'
 import foundGuiddes from '../components/stepper/guideProfiles'
-import questionnaire from '../components/stepper/questionnaire'
+import questionnaireForm from '../components/stepper/questionnaire'
 export default {
   name: 'PageIndex',
   components: {
     basicInfoForm,
     travelInfoForm,
     foundGuiddes,
-    questionnaire
+    questionnaireForm
   },
   provide () {
     return {
