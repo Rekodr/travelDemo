@@ -72,6 +72,10 @@ export default {
         {
           label: 'San Francisco, CA, USA',
           value: 'sf'
+        },
+        {
+          label: 'Cape Town, South Africa',
+          value: 'cp'
         }
       ],
       themes: [

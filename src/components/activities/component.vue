@@ -24,7 +24,11 @@ export default {
   props: ['activity'],
   data () {
     return {
-      msg: this.activity.place
+      title: this.picture.title,
+      msg: this.activity.place,
+      picturelink: this.activity.picturelink,
+      startTime: this.activity.begintime,
+      endTime: this.activity.endtime
     }
   }
 }

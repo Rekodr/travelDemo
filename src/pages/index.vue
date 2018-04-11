@@ -22,16 +22,16 @@
         </q-stepper-navigation>
       </q-step>
 
-      <q-step :order="3" title="Your favorit guide">
-        <found-guiddes v-on:lock="lock" v-on:book="updateGuide" :budget="tripInfo.budget"></found-guiddes>
+      <q-step :order="3" title="Your favorite guide">
+        <found-guiddes :budget="tripInfo.budget"></found-guiddes>
         <q-stepper-navigation>
           <q-btn @click="$refs.stepper.previous()" label="Back"/>
           <q-btn @click="nextStep" label="Continue"/>
         </q-stepper-navigation>
       </q-step>
 
-      <q-step :order="4" title="Trip summary">
-        <trip-summary></trip-summary>
+      <q-step :order="4" title="Questionnaire">
+        <questionnaire-form v-on:update="updateQuestionnaire"></questionnaire-form>
         <q-stepper-navigation>
           <q-btn @click="$refs.stepper.previous()" label="Back"/>
           <q-btn label="Complete"/>
@@ -48,14 +48,14 @@
 import basicInfoForm from '../components/stepper/introStep'
 import travelInfoForm from '../components/stepper/tripInfo'
 import foundGuiddes from '../components/stepper/guideProfiles'
-import tripSummary from '../components/stepper/tripSummary'
+import questionnaire from '../components/stepper/questionnaire'
 export default {
   name: 'PageIndex',
   components: {
     basicInfoForm,
     travelInfoForm,
     foundGuiddes,
-    tripSummary
+    questionnaire
   },
   provide () {
     return {
@@ -73,7 +73,8 @@ export default {
       tripInfo: {},
       guide: {},
       dest: 'Tokyo',
-      pagelock: false
+      pagelock: false,
+      questions: {}
     }
   },
   methods: {
@@ -83,8 +84,8 @@ export default {
     updateTripInfo: function (value) {
       this.tripInfo = value
     },
-    updateGuide: function (guide) {
-      this.guide = guide
+    updateQuestionnaire: function (value) {
+      this.questions = value
     },
     nextStep: function () {
       if (this.pagelock === false) {
