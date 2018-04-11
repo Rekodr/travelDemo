@@ -15,7 +15,7 @@
       <br>
       <q-field icon="date_range" error-label="this field is required.">
         <q-datetime modal :value="userTemp.birthday" float-label="Date of birth?" type="date"
-        clearable :error="$v.userTemp.birthday.$error"
+        clearable :error="$v.userTemp.birthday.$error" default-value="01-01-1991"
         @change="val => { userTemp.birthday = val, updateUser()}"/>
       </q-field>
       <br>
@@ -42,7 +42,7 @@ export default {
       userTemp: {
         username: null,
         email: '',
-        birthday: null,
+        birthday: '01-01-1991',
         fromLoc: null,
         userid: null
       },

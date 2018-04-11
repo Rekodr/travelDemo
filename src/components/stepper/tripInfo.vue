@@ -55,8 +55,8 @@ export default {
       tripInfo: {
         origin: null,
         destination: null,
-        firstDay: null,
-        lastDay: null,
+        firstDay: new Date(),
+        lastDay: new Date(),
         people: null,
         budget: {
           min: 0,
