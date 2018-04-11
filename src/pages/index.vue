@@ -31,13 +31,19 @@
       </q-step>
 
       <q-step :order="4" title="Questionnaire">
-        <questionnaire-form v-on:update="updateQuestionnaire"></questionnaire-form>
+        <questionnaire-form v-on:lock="lock" v-on:update="updateQuestionnaire"></questionnaire-form>
         <q-stepper-navigation>
           <q-btn @click="$refs.stepper.previous()" label="Back"/>
-          <q-btn label="Complete"/>
+          <q-btn @click="nextStep" label="Continue"/>
         </q-stepper-navigation>
       </q-step>
 
+      <q-step :order="5" title="Your trip timeline">
+        <trip-timeline></trip-timeline>
+       <q-stepper-navigation>
+          <q-btn @click="$refs.stepper.previous()" label="Back"/>
+        </q-stepper-navigation>
+      </q-step>
     </q-stepper>
   </q-page>
 </template>
@@ -49,13 +55,15 @@ import basicInfoForm from '../components/stepper/introStep'
 import travelInfoForm from '../components/stepper/tripInfo'
 import foundGuiddes from '../components/stepper/guideProfiles'
 import questionnaireForm from '../components/stepper/questionnaire'
+import tripTimeline from '../components/stepper/tripSummary'
 export default {
   name: 'PageIndex',
   components: {
     basicInfoForm,
     travelInfoForm,
     foundGuiddes,
-    questionnaireForm
+    questionnaireForm,
+    tripTimeline
   },
   provide () {
     return {

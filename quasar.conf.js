@@ -86,7 +86,9 @@ module.exports = function (ctx) {
         'QRange',
         'QStepper',
         'QStep',
-        'QStepperNavigation'
+        'QStepperNavigation',
+        'QTimeline',
+        'QTimelineEntry'
       ],
       directives: [
         'Ripple',
