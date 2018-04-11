@@ -23,14 +23,15 @@
       </q-step>
 
       <q-step :order="3" title="Your favorit guide">
-        <found-guiddes :budget="tripInfo.budget"></found-guiddes>
+        <found-guiddes v-on:lock="lock" v-on:book="updateGuide" :budget="tripInfo.budget"></found-guiddes>
         <q-stepper-navigation>
           <q-btn @click="$refs.stepper.previous()" label="Back"/>
           <q-btn @click="nextStep" label="Continue"/>
         </q-stepper-navigation>
       </q-step>
 
-      <q-step :order="4" title="something">
+      <q-step :order="4" title="Trip summary">
+        <trip-summary></trip-summary>
         <q-stepper-navigation>
           <q-btn @click="$refs.stepper.previous()" label="Back"/>
           <q-btn label="Complete"/>
@@ -47,12 +48,14 @@
 import basicInfoForm from '../components/stepper/introStep'
 import travelInfoForm from '../components/stepper/tripInfo'
 import foundGuiddes from '../components/stepper/guideProfiles'
+import tripSummary from '../components/stepper/tripSummary'
 export default {
   name: 'PageIndex',
   components: {
     basicInfoForm,
     travelInfoForm,
-    foundGuiddes
+    foundGuiddes,
+    tripSummary
   },
   provide () {
     return {
@@ -68,6 +71,7 @@ export default {
         fromLoc: null
       },
       tripInfo: {},
+      guide: {},
       dest: 'Tokyo',
       pagelock: false
     }
@@ -78,6 +82,9 @@ export default {
     },
     updateTripInfo: function (value) {
       this.tripInfo = value
+    },
+    updateGuide: function (guide) {
+      this.guide = guide
     },
     nextStep: function () {
       if (this.pagelock === false) {

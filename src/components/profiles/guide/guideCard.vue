@@ -1,12 +1,12 @@
 <template>
 <div>
-  <q-card inline style="width: 300px" class="col-xs-12 col-sm-6 col-md-4">
+  <q-card inline text-color="black" :color="color" style="width: 300px" class="col-xs-12 col-sm-6 col-md-4">
     <q-card-media overlay-position="bottom">
       <img src="~assets/place.jpg">
       <div slot="overlay" class="row justify-between q-pa-sm">
         <q-btn  dense round color="primary" icon="person_pin"
           @click="show"/>
-        <q-btn dense round color="primary" icon="shopping cart"/>
+        <q-btn dense round color="primary" icon="shopping cart" @click="book"/>
       </div>
     <profile @closed="show" :showProfile="showProfile" :guide="guide"></profile>
     </q-card-media>
@@ -45,12 +45,18 @@ export default {
   data () {
     return {
       msg: this.guide.username,
-      showProfile: false
+      showProfile: false,
+      color: 'white'
     }
   },
   methods: {
     show: function () {
       this.showProfile = !this.showProfile
+    },
+    book: function () {
+      var guide = this.guide
+      this.$emit('book', guide)
+      this.color = 'secondary'
     }
   }
 }

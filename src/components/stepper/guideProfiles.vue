@@ -2,7 +2,7 @@
 <div>
   <div class="column inline q-pa-sm" v-for="guide in guides" :key="guide.name">
     <div v-if="budget.max >= guide.service && budget.min <= guide.service">
-      <guide-comp :guide="guide"></guide-comp>
+      <guide-comp v-on:book="book" :guide="guide"></guide-comp>
     </div>
   </div>
 </div>
@@ -15,6 +15,12 @@ export default {
   props: ['budget'],
   components: {
     guideComp
+  },
+  methods: {
+    book: function (guide) {
+      this.$emit('book', guide)
+      this.$emit('lock', false)
+    }
   },
   data () {
     return {

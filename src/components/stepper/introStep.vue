@@ -21,7 +21,7 @@
       <br>
       <q-field  icon="place" error-label="this field is required.">
         <q-search type="text" :value="userTemp.fromLoc"
-          float-label="Where are you from ?" placeholder="Tokyo, Japan" clearable
+          float-label="Where are you from ?" placeholder="Japan" clearable
           :error="$v.userTemp.fromLoc.$error"
           @change="val => {userTemp.fromLoc = val, updateUser()}"/>
       </q-field>
